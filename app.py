@@ -56,16 +56,16 @@ def grab_title_url(id):
     except:
         return('channel')
 
-@app.route('/youtube-dl')
+@app.route('/')
 def dl_queue_list():
     return render_template('index.html')
 
 
-@app.route('/youtube-dl/static/:filename#.*#')
+@app.route('/static/:filename#.*#')
 def server_static(filename):
     return app.send_static_file(filename)
 
-@app.route('/youtube-dl/q', methods=['GET'])
+@app.route('/q', methods=['GET'])
 def q_size():
 
     return jsonify(
@@ -74,7 +74,7 @@ def q_size():
     )
 
 
-@app.route('/youtube-dl/q', methods=['POST'])
+@app.route('/q', methods=['POST'])
 def q_put():
     url = request.form["url"].strip('\"')
     options = {
@@ -94,11 +94,11 @@ def q_put():
         options = options['format'],
         title = title
     )
-@app.route('/youtube-dl/qh', methods=['GET'])
+@app.route('/qh', methods=['GET'])
 def q_size_h():
     return redirect(url_for('dl_queue_list'))
 
-@app.route('/youtube-dl/qh', methods=['POST'])
+@app.route('/qh', methods=['POST'])
 def q_put_h():
     url = request.form["url"].strip('\"')
     options = {
@@ -116,12 +116,12 @@ def q_put_h():
 
 
 
-@app.route('/youtube-dl/search', methods=['GET'])
+@app.route('/search', methods=['GET'])
 def yt_search_page():
 
     return redirect(url_for('dl_queue_list'))
 
-@app.route('/youtube-dl/search', methods=['POST'])
+@app.route('/search', methods=['POST'])
 def yt_search():
     textToSearch = request.form["search"]
     req_format = request.form["s_format"]
