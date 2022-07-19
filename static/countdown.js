@@ -1,11 +1,11 @@
 var seconds = 10;
-      
+
 function countdown() {
     seconds = seconds - 1;
     if (seconds < 0) {
         var Url = window.location;
         // Redirection link 
-        window.location = Url["origin"] + "/youtube-dl" ;
+        window.location = Url["origin"];
     } else {
         // Update remaining seconds
         document.getElementById("countdown-number").innerHTML = seconds;
