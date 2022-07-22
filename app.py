@@ -56,6 +56,10 @@ def grab_title_url(id):
     except:
         return('channel')
 
+@app.route('/')
+def redirect_to_app():
+    return redirect("/youtube-dl", code=302)
+
 @app.route('/youtube-dl')
 def dl_queue_list():
     return render_template('index.html')
